@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 public class DataLayer
 {
-    private string connectionString = "Server=tcp:calculator-server1123.database.windows.net,1433;Initial Catalog=Calculator-database;Persist Security Info=False;User ID=sqladmin;Password=Sqladmi@128;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+    private string connectionString = "workstation id=SachyDB.mssql.somee.com;packet size=4096;user id=sachyckyne_SQLLogin_1;pwd=ri31z9jhqv;data source=SachyDB.mssql.somee.com;persist security info=False;initial catalog=SachyDB;TrustServerCertificate=True";
 
     // Save the calculation result to the database
     public void SaveResult(double firstNumber, string operation, double secondNumber, double result)
