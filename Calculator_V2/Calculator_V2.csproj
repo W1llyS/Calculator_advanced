@@ -79,9 +79,10 @@
     <Compile Include="Calculator_V2.aspx.designer.cs">
       <DependentUpon>Calculator_V2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DataLayer.cs" />
+    <Compile Include="DataAccess\DataLayer.cs" />
     <Compile Include="Models\CalculationRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CalculatorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -92,10 +93,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataAccess\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
