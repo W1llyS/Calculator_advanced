@@ -5,7 +5,7 @@ using Calculator_V2.Models;
 
 namespace Calculator_V2.DataAccess
 {
-    public class DataLayer
+    public class DataLayer : IDataAccess
     {
         private string connectionString = "workstation id=SachyDB.mssql.somee.com;packet size=4096;user id=sachyckyne_SQLLogin_1;pwd=ri31z9jhqv;data source=SachyDB.mssql.somee.com;persist security info=False;initial catalog=SachyDB;TrustServerCertificate=True";
 

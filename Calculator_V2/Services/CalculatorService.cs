@@ -8,11 +8,11 @@ namespace Calculator_V2.Services
 {
     public class CalculatorService
     {
-        private readonly DataLayer _dataLayer;
+        private readonly IDataAccess _dataAccess;
 
-        public CalculatorService(DataLayer dataLayer)
+        public CalculatorService(IDataAccess dataAccess)
         {
-            _dataLayer = dataLayer;
+            _dataAccess = dataAccess;
         }
 
         public double Compute(double a, double b, string operation)
@@ -40,13 +40,13 @@ namespace Calculator_V2.Services
             if (round)
                 result = Math.Round(result);
 
-            _dataLayer.SaveResult(a, operation, b, result);
+            _dataAccess.SaveResult(a, operation, b, result);
             return result;
         }
 
         public List<CalculationRecord> GetHistory()
         {
-            return _dataLayer.GetHistory();
+            return _dataAccess.GetHistory();
         }
     }
 }

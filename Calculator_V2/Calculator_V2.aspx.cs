@@ -1,9 +1,7 @@
-﻿using System;
-using System.Web.Routing;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Calculator_V2.DataAccess;
+﻿using Calculator_V2.DataAccess;
 using Calculator_V2.Services;
+using System;
+using System.Web.UI.WebControls;
 
 
 namespace Calculator_V2
@@ -11,11 +9,13 @@ namespace Calculator_V2
     public partial class Calculator_V2 : System.Web.UI.Page
     {
         public void SendError(Exception ex)
-        {         
-            System.Diagnostics.Debug.WriteLine(ex.ToString()); 
+        {
+            System.Diagnostics.Debug.WriteLine(ex.ToString());
         }
 
-        private readonly CalculatorService _calculatorService = new CalculatorService(new DataAccess.DataLayer());
+        private readonly CalculatorService _calculatorService =
+        new CalculatorService(new DataLayer()); // DataLayer now implements IDataAccess
+
 
 
         // ViewState variables to store calculator state
@@ -41,7 +41,7 @@ namespace Calculator_V2
         {
             get { return ViewState["justCalculated"] != null ? (bool)ViewState["justCalculated"] : false; }
             set { ViewState["justCalculated"] = value; }
-        }     
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
