@@ -3,6 +3,8 @@ using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Calculator_V2.DataAccess;
+using Calculator_V2.Services;
+
 
 namespace Calculator_V2
 {
@@ -13,8 +15,8 @@ namespace Calculator_V2
             System.Diagnostics.Debug.WriteLine(ex.ToString()); 
         }
 
-        // DataLayer instance for data access
-        private DataLayer dataLayer = new DataLayer();
+        private readonly CalculatorService _calculatorService = new CalculatorService(new DataAccess.DataLayer());
+
 
         // ViewState variables to store calculator state
         protected double resultValue
@@ -83,71 +85,42 @@ namespace Calculator_V2
 
         protected void ButtonSpocitat_Click(object sender, EventArgs e)
         {
-            double secondNumber = double.Parse(TextBoxVysledek.Text);
-            double result = 0;
-
-            // Perform the calculation based on the selected operator
-            switch (operationPerformed)
+            try
             {
-                case "+":
-                    result = resultValue + secondNumber;
-                    break;
-                case "-":
-                    result = resultValue - secondNumber;
-                    break;
-                case "*":
-                    result = resultValue * secondNumber;
-                    break;
-                case "/":
-                    if (secondNumber != 0)
-                    {
-                        result = resultValue / secondNumber;
-                    }
-                    else
-                    {
-                        
-                        TextBoxVysledek.Text = "Error: Division by zero";
-                        return; // Exit the method without saving the result
-                    }
-                    break;
-                default:
-                    break;
-            }
+                double num1 = double.Parse(TextBoxVysledek.Text);
+                string operation = operationPerformed;
+                bool round = CheckBoxWholeNumbers.Checked;
 
-            // Round the result to the closest whole number if checkbox is checked
-            if (CheckBoxWholeNumbers.Checked)
+                double result = _calculatorService.Calculate(resultValue, num1, operation, round);
+
+                TextBoxVysledek.Text = result.ToString();
+                LoadHistory();
+
+                justCalculated = true;
+                operationPerformed = "";
+                resultValue = 0;
+                isOperationPerformed = false;
+            }
+            catch (DivideByZeroException)
             {
-                result = Math.Round(result); 
+                TextBoxVysledek.Text = "Error: Division by zero";
             }
-
-            // Display the result, save it in the history, and reload the history
-            TextBoxVysledek.Text = result.ToString();
-            dataLayer.SaveResult(resultValue, operationPerformed, secondNumber, result);
-            LoadHistory();
-
-            // Setting the variable for the next calculation
-            justCalculated = true;
-            operationPerformed = "";
-            resultValue = 0;
-            isOperationPerformed = false;
+            catch (Exception ex)
+            {
+                TextBoxVysledek.Text = $"Chyba: {ex.Message}";
+                SendError(ex);
+            }
         }
+
 
         // Method to load and display calculation history
         private void LoadHistory()
         {
-            try
+            var history = _calculatorService.GetHistory();
+            TextBoxHistory.Text = "";
+            foreach (var record in history)
             {
-                var history = dataLayer.GetHistory();
-                TextBoxHistory.Text = ""; // Deleting existing content
-                foreach (var record in history)
-                {
-                    TextBoxHistory.Text += $"{record.FirstNumber} {record.Operation} {record.SecondNumber} = {record.Result}\r\n";
-                }
-            }
-            catch (Exception ex)
-            {
-                TextBoxHistory.Text = $"Chyba při načítání historie: {ex.Message}\r\n";
-                SendError(ex); 
+                TextBoxHistory.Text += $"{record.FirstNumber} {record.Operation} {record.SecondNumber} = {record.Result}\r\n";
             }
         }
     }
