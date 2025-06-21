@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using Calculator_V2.Models;
 
 public class DataLayer
 {
@@ -55,11 +56,5 @@ public class DataLayer
     }
 
     // Class to represent a single calculation record
-    public class CalculationRecord
-    {
-        public double FirstNumber { get; set; }
-        public string Operation { get; set; }
-        public double SecondNumber { get; set; }
-        public double Result { get; set; }
-    }
+   
 }
