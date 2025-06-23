@@ -1,6 +1,9 @@
-# Calculator_normal
+# Calculator_advanced
 
-**Normal calculator** is a mobile-first ASP.NET WebForms application with a basic UI. It performs basic arithmetic operations (`+`, `-`, `*`, `/`), supports optional rounding to whole numbers, and keeps a scrollable history of your last calculations.
+Advanced calculator is a mobile-first ASP.NET WebForms application with a clean, intuitive UI for basic arithmetic (+, -, *, /), optional whole-number rounding, and a scrollable history of your last 10 calculations.
+
+🚀 Available at: https://w1llys.bsite.net
+
 
 ---
 
@@ -31,7 +34,7 @@
 **Mobile View**  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c8895eee-91d6-4033-b69f-47b642fbf0a2" alt="Options Screen" width="300" />
+  <img src="https://github.com/user-attachments/assets/ce0ef58b-b55b-492d-9f0c-fc9aeb61bcfa" alt="Options Screen" width="300" />
 </p>
 
 ---
@@ -77,3 +80,8 @@
 
 * **Theming & Dark Mode**
   Offer light/dark themes and let users switch at runtime.
+  
+* **Mobile Application**
+  Build native iOS and Android calculator apps with a customizable themes and synchronized calculation history.
+
+  
