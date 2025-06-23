@@ -7,7 +7,7 @@ namespace Calculator_V2.DataAccess
 {
     public class DataLayer : IDataAccess
     {
-        private string connectionString = "workstation id=SachyDB.mssql.somee.com;packet size=4096;user id=sachyckyne_SQLLogin_1;pwd=ri31z9jhqv;data source=SachyDB.mssql.somee.com;persist security info=False;initial catalog=SachyDB;TrustServerCertificate=True";
+        private string connectionString = "Server=DESKTOP-KN8MTED\\TESTV1;Database=Calculator;Integrated Security=True;";
 
         public void SaveResult(double firstNumber, string operation, double secondNumber, double result)
         {
