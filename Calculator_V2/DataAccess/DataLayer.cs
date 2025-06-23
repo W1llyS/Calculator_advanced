@@ -7,7 +7,16 @@ namespace Calculator_V2.DataAccess
 {
     public class DataLayer : IDataAccess
     {
-        private string connectionString = "Server=DESKTOP-KN8MTED\\TESTV1;Database=Calculator;Integrated Security=True;";
+        // with escaped backslash
+        private string connectionString =
+            "Server=sql.bsite.net\\MSSQL2016;" +
+            "Database=afsddafs_eee;" +
+            "User Id=afsddafs_eee;" +
+            "Password=DontLookVole;" +
+            "Encrypt=True;" +
+            "TrustServerCertificate=True;" +
+            "Connection Timeout=30;";
+
 
         public void SaveResult(double firstNumber, string operation, double secondNumber, double result)
         {
