@@ -1,6 +1,6 @@
 # Calculator_advanced
 
-Advanced calculator is a mobile-first ASP.NET WebForms application with a clean, intuitive UI for basic arithmetic (+, -, *, /), optional whole-number rounding, and a scrollable history of your last 10 calculations.
+Advanced calculator is a mobile-first ASP.NET WebForms application with a clean, intuitive UI for basic arithmetic (+, -, *, /), optional whole-number rounding, and a scrollable history of your last 10 calculations. The application is also unit tested to ensure reliability and correctness. 
 
 🚀 Available at: https://w1llys.bsite.net
 
@@ -28,14 +28,15 @@ Advanced calculator is a mobile-first ASP.NET WebForms application with a clean,
 
 **Desktop View**  
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/2ca0d4bd-24ca-4739-ab09-29902707b879" alt="Options Screen" width="800" />
+  <img src="images/DesktopView.png" alt="Desktop Calculator" width="800" />
 </p>
 
 **Mobile View**  
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ce0ef58b-b55b-492d-9f0c-fc9aeb61bcfa" alt="Options Screen" width="300" />
+  <img src="images/MobileView.png" alt="Mobile Calculator" width="300" />
 </p>
+
 
 ---
 
